@@ -62,6 +62,9 @@ export default {
 			if (this.protocolId == 'melon') {
 				return 'shares';
 			}
+			if (this.protocolId == 'curve') {
+				return Formatter.formatCurvePool(this.investmentId);
+			}
 			if (this.protocolId == 'balancer') {
 				return 'BPT';
 			}
