@@ -240,6 +240,9 @@ export default {
 			if (investment.protocolId == 'tokensets') {
 				return Formatter.formatSetName(investment.id);
 			}
+			if (investment.protocolId == 'melon') {
+				return 'Melon fund';
+			}
 			if (investment.protocolId == 'curve') {
 				return Formatter.formatCurvePool(investment.id);
 			}

@@ -74,6 +74,9 @@ export default {
 			if (this.protocolId == 'tokensets') {
 				return Formatter.formatSet(this.investmentId);
 			}
+			if (this.protocolId == 'melon') {
+				return 'shares';
+			}
 			if (this.protocolId == 'curve') {
 				return Formatter.formatCurvePool(this.investmentId);
 			}
