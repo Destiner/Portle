@@ -227,6 +227,9 @@ export default {
 			if (investment.protocolId == 'curve') {
 				return 'tokens';
 			}
+			if (investment.protocolId == 'balancer') {
+				return 'BPT';
+			}
 			return investment.id;
 		},
 		formatInvestmentName(investment) {
@@ -239,6 +242,9 @@ export default {
 			}
 			if (investment.protocolId == 'curve') {
 				return Formatter.formatCurvePool(investment.id);
+			}
+			if (investment.protocolId == 'balancer') {
+				return 'Balancer pool';
 			}
 			return investment.id;
 		},

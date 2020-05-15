@@ -23,6 +23,7 @@ class Formatter {
 	static formatProtocol(protocolId) {
 		const protocolMap = {
 			'aave': 'Aave',
+			'balancer': 'Balancer',
 			'compound': 'Compound',
 			'curve': 'Curve',
 			'dydx': 'dYdX',

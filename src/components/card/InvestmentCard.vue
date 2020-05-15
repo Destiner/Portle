@@ -77,6 +77,9 @@ export default {
 			if (this.protocolId == 'curve') {
 				return Formatter.formatCurvePool(this.investmentId);
 			}
+			if (this.protocolId == 'balancer') {
+				return 'BPT';
+			}
 			return this.investmentId;
 		},
 		title() {
