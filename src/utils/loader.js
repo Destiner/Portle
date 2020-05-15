@@ -7,6 +7,7 @@ import Wallets from './wallets.js';
 
 import erc20Abi from '../data/abi/erc20.json';
 
+import coinIds from '../data/coinIds.json';
 import tokenAddresses from '../data/addresses.json';
 import tokenDecimals from '../data/decimals.json';
 import tokenized from '../data/tokenized.json';
@@ -748,12 +749,22 @@ class Loader {
 	}
 }
 
-async function fetchPrices(assets) {
-	const assetString = assets.join('%2C');
-	const url = `https://api.portle.io/price?assets=${assetString}`;
+async function fetchPrices(assetIds) {
+	const coinIdString = assetIds
+		.map((assetId) => coinIds[assetId])
+		.join(',');
+	const url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinIdString}&vs_currencies=usd`;
 	const response = await fetch(url);
 	const prices = await response.json();
-	return prices;
+	const priceMap = {};
+	for (const assetId of assetIds) {
+		const coinId = coinIds[assetId];
+		const price = prices[coinId]
+			? prices[coinId].usd
+			: 0;
+		priceMap[assetId] = price;
+	}
+	return priceMap;
 }
 
 async function fetchAssets(addresses) {
